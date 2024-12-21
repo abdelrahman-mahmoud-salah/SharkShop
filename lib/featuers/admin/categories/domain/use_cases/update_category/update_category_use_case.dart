@@ -7,6 +7,6 @@ class UpdateCategoryUseCase {
   final UpdateCategoryRepository _repository;
   UpdateCategoryUseCase(this._repository);
   Future<ApiResult<CreateCategoryModelRepo>> call(
-          {required int id, required CreateCatecoryModelRequest model}) =>
+          {required String id, required CreateCatecoryModelRequest model}) =>
       _repository.UpdateCategory(id: id, model: model);
 }

@@ -84,6 +84,32 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<void> deleteProduct(Map<String, dynamic> mutation) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(mutation);
+    final _options = _setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'graphql',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
   Future<dynamic> userRole() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -307,8 +333,43 @@ class _ApiManager implements ApiManager {
   }
 
   @override
+  Future<CreateProductRepoModel> createProduct(
+      CreateProductRequestModel createProductModelRequest) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(createProductModelRequest.toJson());
+    final _options = _setStreamType<CreateProductRepoModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'api/v1/products/',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CreateProductRepoModel _value;
+    try {
+      _value = CreateProductRepoModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<CreateCategoryModelRepo> updateCategory(
-    int id,
+    String id,
     CreateCatecoryModelRequest updateCategoryRequest,
   ) async {
     final _extra = <String, dynamic>{};
@@ -323,7 +384,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          'categories/${id}',
+          'api/v1/categories/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -336,6 +397,43 @@ class _ApiManager implements ApiManager {
     late CreateCategoryModelRepo _value;
     try {
       _value = CreateCategoryModelRepo.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ProductRepoModel> updateProduct(
+    String id,
+    UpdateProductRequestModel updateProductRequest,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(updateProductRequest.toJson());
+    final _options = _setStreamType<ProductRepoModel>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'api/v1/products/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ProductRepoModel _value;
+    try {
+      _value = ProductRepoModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

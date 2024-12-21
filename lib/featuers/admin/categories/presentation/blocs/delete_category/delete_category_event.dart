@@ -1,11 +1,14 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-part 'delete_category_event.freezed.dart';
+class DeleteCategoryEvent extends Equatable {
+  const DeleteCategoryEvent();
+  @override
+  List<Object?> get props => [];
+}
 
-@freezed
-class DeleteCategoryEvent with _$DeleteCategoryEvent {
-  const factory DeleteCategoryEvent.started() = _Started;
-  // ignore: non_constant_identifier_names
-  const factory DeleteCategoryEvent.deleteCategory({required String Id}) =
-      DeleteCategory;
+class DeleteCategoryWithId extends DeleteCategoryEvent {
+  final String Id;
+  const DeleteCategoryWithId(this.Id);
+   @override
+  List<Object?> get props => [Id];
 }

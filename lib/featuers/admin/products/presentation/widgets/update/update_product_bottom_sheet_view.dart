@@ -1,24 +1,46 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/common/widget/custom_button.dart';
+import 'package:flutter_application_2/featuers/admin/products/presentation/blocs/update_product/update_product_bloc.dart';
+import 'package:flutter_application_2/featuers/admin/products/presentation/widgets/update/update_list_image.dart';
+import 'package:flutter_application_2/featuers/admin/products/presentation/widgets/update/update_product_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/common/widget/custom_drop_down.dart';
 import '../../../../../../core/common/widget/text_app.dart';
 import '../../../../../../core/common/widget/text_from_field_app.dart';
 import '../../../../../../core/extension/context_extention.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class UpdateProductBottomSheetView extends StatelessWidget {
   UpdateProductBottomSheetView({
     super.key,
     required this.image,
+    // ignore: non_constant_identifier_names
+    this.Title,
+    this.price,
+    this.description,
+    this.category,
+    required this.id,
   });
-List<String> image;
+  List<String> image;
+  // ignore: non_constant_identifier_names
+  final String? Title;
+  final String? price;
+  final String? description;
+  final String? category;
+  final int id;
+
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<UpdateProductBloc>();
+    bloc.titleController.text = Title!;
+    bloc.priceController.text = price!;
+    bloc.descriptionController.text = description!;
+    bloc.lisImages = image;
     return SizedBox(
       height: 600,
       child: SingleChildScrollView(
         child: Form(
-          key: GlobalKey(),
+          key: bloc.fromKey,
           child: Column(
             children: [
               Center(
@@ -39,36 +61,7 @@ List<String> image;
                     color: context.mycolors.textColorInButton),
               ),
               SizedBox(height: 15.h),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: 90.h,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(image[index]),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      child: const Icon(
-                        Icons.add_a_photo_outlined,
-                        size: 50,
-                        color: Colors.white,
-                      ),
-                    ),
-                  );
-                },
-                itemCount: image.length,
-                separatorBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    height: 10.h,
-                  );
-                },
-              ),
+              UpdateListOfImages(image: image),
               SizedBox(height: 15.h),
               TextApp(
                 text: 'update Title',
@@ -80,9 +73,9 @@ List<String> image;
               SizedBox(height: 15.h),
               // Title
               CustomTextField(
-                controller: TextEditingController(),
+                controller: bloc.titleController,
                 keyboardType: TextInputType.emailAddress,
-                hintText: 'Title',
+                hintText: Title,
                 hintStyle: context.textStyle.copyWith(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
@@ -105,9 +98,9 @@ List<String> image;
               SizedBox(height: 15.h),
               // Price
               CustomTextField(
-                controller: TextEditingController(),
+                controller:bloc.priceController,
                 keyboardType: TextInputType.number,
-                hintText: 'Price',
+                hintText: price,
                 hintStyle: context.textStyle.copyWith(
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w600,
@@ -130,10 +123,10 @@ List<String> image;
               SizedBox(height: 15.h),
               //Description
               CustomTextField(
-                controller: TextEditingController(),
+                controller: bloc.descriptionController,
                 maxLines: 4,
                 keyboardType: TextInputType.multiline,
-                hintText: 'Description',
+                hintText: description,
                 hintStyle: context.textStyle.copyWith(
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w600,
@@ -156,27 +149,22 @@ List<String> image;
               SizedBox(height: 15.h),
               CustomCreateDropDown(
                 hintText: "Category",
-                items: [],
+                items: [category!],
                 onChanged: (value) {},
-                value: "",
+                value: category,
               ),
               SizedBox(
                 height: 20.h,
               ),
-              CustomButton(
-                onPressed: () {},
-                backgroundColor: context.mycolors.textColorInButton,
-                lastRadius: 20,
-                threeRadius: 20,
-                textColor: context.mycolors.bluePinkDark,
-                text: 'Create Product',
-                width: MediaQuery.of(context).size.width,
-                height: 50.h,
+              UpdateProductButton(
+                id: id,
               ),
             ],
           ),
         ),
       ),
     );
+    
   }
+  
 }

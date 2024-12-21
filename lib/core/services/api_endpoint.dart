@@ -3,6 +3,7 @@ class ApiEndpoint {
   static const String graphql = 'graphql';
   static const String userRole = 'api/v1/auth/profile';
   static const String getallproduct = 'api/v1/products/';
+  static const String createproduct = 'api/v1/products/';
   static const String getallCategory = 'api/v1/categories/';
   static const String createCategory = 'api/v1/categories/';
   static const String updateCategory = 'api/v1/categories/{id}';

@@ -5,6 +5,6 @@ import '../../../data/models/create_category/create_category_model_repo.dart';
 abstract class UpdateCategoryRepository {
   // ignore: non_constant_identifier_names
   Future<ApiResult<CreateCategoryModelRepo>> UpdateCategory(
-      {required final int id,
+      {required final String id,
       required final CreateCatecoryModelRequest model});
 }

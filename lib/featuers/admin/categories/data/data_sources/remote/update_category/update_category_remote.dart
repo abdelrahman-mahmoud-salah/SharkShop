@@ -4,5 +4,5 @@ import '../../../models/create_category/create_category_model_repo.dart';
 
 abstract class UpdateCategoryRemote {
   Future<ApiResult<CreateCategoryModelRepo>> updateCategory(
-      {required int id, required CreateCatecoryModelRequest model});
+      {required String id, required CreateCatecoryModelRequest model});
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/core/common/widget/emty_screen.dart';
+import 'package:flutter_application_2/core/extension/context_extention.dart';
 import '../blocs/get_all_product/get_all_product_bloc.dart';
 import '../blocs/get_all_product/get_all_product_event.dart';
 import '../blocs/get_all_product/get_all_product_state.dart';
@@ -24,16 +26,14 @@ class ProductAdminScreenBoody extends StatelessWidget {
           Expanded(
             child: RefreshIndicator(
               onRefresh: () async {
-                context
-                    .read<GetAllProductBloc>()
-                    .add(GetAllProductEvent.getAllProducts());
+                context.read<AllProductBloc>().add(GetAllProduct());
               },
               child: CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
-                    child: BlocBuilder<GetAllProductBloc, GetAllProductState>(
+                    child: BlocBuilder<AllProductBloc, AllProductState>(
                       builder: (context, state) {
-                        if (state.status == GetAllProductStateValues.loading) {
+                        if (state.status == AllProductStateValues.loading) {
                           return Skeletonizer(
                             enabled: true,
                             switchAnimationConfig:
@@ -60,7 +60,7 @@ class ProductAdminScreenBoody extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 return const ProductsAdminItem(
                                     categoryId: "Favorite  ",
-                                    productId: "Favorite  ",
+                                    productId: 0,
                                     title: "Favorite  ",
                                     price: "Favorite  ",
                                     categoryName: "Favorite  ",
@@ -72,7 +72,7 @@ class ProductAdminScreenBoody extends StatelessWidget {
                             ),
                           );
                         } else if (state.status ==
-                            GetAllProductStateValues.success) {
+                            AllProductStateValues.success) {
                           return GridView.builder(
                             itemCount: state.products!.length,
                             shrinkWrap: true,
@@ -89,7 +89,7 @@ class ProductAdminScreenBoody extends StatelessWidget {
                               return ProductsAdminItem(
                                 categoryId: state.products![index].category!.id
                                     .toString(),
-                                productId: state.products![index].id.toString(),
+                                productId: state.products![index].id,
                                 title: state.products![index].title,
                                 price: state.products![index].price!.toString(),
                                 categoryName:
@@ -100,12 +100,16 @@ class ProductAdminScreenBoody extends StatelessWidget {
                             },
                           );
                         } else if (state.status ==
-                            GetAllProductStateValues.error) {
+                            AllProductStateValues.error) {
                           return Center(
                               child: Text(
                                   'An error occurred while fetching products ${state.errorMessage}'));
+                        } else if (state.status ==
+                            AllProductStateValues.empty) {
+                          return EmptyScreen(
+                              title: context.lang.empty_category);
                         } else {
-                          return const SizedBox.shrink();
+                          return SizedBox.shrink();
                         }
                       },
                     ),

@@ -225,7 +225,7 @@ class _$GetAllCategryImpl implements GetAllCategry {
 
   @override
   String toString() {
-    return '$isloading';
+    return 'GetallcategoryEvent.getAllCategry(isloading: $isloading)';
   }
 
   @override

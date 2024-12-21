@@ -1,9 +1,16 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-part 'get_all_product_event.freezed.dart';
+class AllProductEvent extends Equatable {
+  const AllProductEvent();
+  @override
+  List<Object?> get props => [];
+}
 
-@freezed
-class GetAllProductEvent with _$GetAllProductEvent {
-  const factory GetAllProductEvent.started() = _Started;
-  factory GetAllProductEvent.getAllProducts() = GetAllProductsEvent;
+class GetAllProduct extends AllProductEvent {
+  @override
+  List<Object?> get props => [];
+}
+class CreateProduct extends AllProductEvent {
+  @override
+  List<Object?> get props => [];
 }

@@ -10,7 +10,7 @@ class UpdateCategoryRemoteImpl implements UpdateCategoryRemote {
   UpdateCategoryRemoteImpl(this._apiManager);
   @override
   Future<ApiResult<CreateCategoryModelRepo>> updateCategory(
-      {required int id, required CreateCatecoryModelRequest model}) async{
+      {required String id, required CreateCatecoryModelRequest model}) async{
     try {
       var result =await _apiManager.updateCategory(id, model);
       return ApiResult.success(result);

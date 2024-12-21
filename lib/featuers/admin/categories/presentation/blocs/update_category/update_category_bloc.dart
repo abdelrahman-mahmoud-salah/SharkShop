@@ -14,15 +14,15 @@ class UpdateCategoryBloc
   }
   final UpdateCategoryUseCase _updateCategoryUseCase;
   final TextEditingController nameController = TextEditingController();
-   String image = "";
+  String image = "";
   final GlobalKey key = GlobalKey();
-  int id=0;
+  String id = "";
   FutureOr<void> updateCategory(event, emit) async {
     emit(const UpdateCategoryState().copyWith(
         stateValue: UpdateCategoryStateValue.loading,
         loading: event.toString()));
     var card = await _updateCategoryUseCase.call(
-        id:id ,
+        id: id,
         model: CreateCatecoryModelRequest(
             image: image, name: nameController.text));
     card.when(

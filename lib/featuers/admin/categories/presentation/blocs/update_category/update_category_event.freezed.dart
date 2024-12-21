@@ -225,7 +225,7 @@ class _$UpdateCategoryImpl implements UpdateCategory {
 
   @override
   String toString() {
-    return '$categoryId';
+    return 'UpdateCategoryEvent.updateCategory(categoryId: $categoryId)';
   }
 
   @override

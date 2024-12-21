@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/common/widget/custom_button.dart';
-import '../../../../../../core/common/widget/custom_drop_down.dart';
+import 'package:flutter_application_2/featuers/admin/products/presentation/blocs/get_all_product/get_all_product_bloc.dart';
+import 'package:flutter_application_2/featuers/admin/products/presentation/widgets/create_product/custom_create_button.dart';
+import 'package:flutter_application_2/featuers/admin/products/presentation/widgets/create_product/list_of_category.dart';
+import 'package:flutter_application_2/featuers/admin/products/presentation/widgets/create_product/upload_list_of_image.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/common/widget/text_app.dart';
 import '../../../../../../core/common/widget/text_from_field_app.dart';
 import '../../../../../../core/extension/context_extention.dart';
@@ -13,6 +16,7 @@ class CreateProductBottomSheetView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  final bloc=  context.read<AllProductBloc>();
     return SizedBox(
       height: 600,
       child: SingleChildScrollView(
@@ -38,35 +42,7 @@ class CreateProductBottomSheetView extends StatelessWidget {
                     color: context.mycolors.textColorInButton),
               ),
               SizedBox(height: 15.h),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: 90.h,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(0.8),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: const Icon(
-                        Icons.add_a_photo_outlined,
-                        size: 50,
-                        color: Colors.white,
-                      ),
-                    ),
-                  );
-                },
-                itemCount: 3,
-                separatorBuilder:
-                    (BuildContext context, int index) {
-                  return SizedBox(
-                    height: 10.h,
-                  );
-                },
-              ),
+         const  ListOfImageViewAndLogic(),
               SizedBox(height: 15.h),
               TextApp(
                 text: 'Title',
@@ -78,7 +54,7 @@ class CreateProductBottomSheetView extends StatelessWidget {
               SizedBox(height: 15.h),
               // Title
               CustomTextField(
-                controller: TextEditingController(),
+                controller:bloc.titleController ,
                 keyboardType: TextInputType.emailAddress,
                 hintText: 'Title',
                 hintStyle: context.textStyle.copyWith(
@@ -105,7 +81,7 @@ class CreateProductBottomSheetView extends StatelessWidget {
               SizedBox(height: 15.h),
               // Price
               CustomTextField(
-                controller: TextEditingController(),
+                controller: bloc.priceController,
                 keyboardType: TextInputType.number,
                 hintText: 'Price',
                 hintStyle: context.textStyle.copyWith(
@@ -130,7 +106,7 @@ class CreateProductBottomSheetView extends StatelessWidget {
               SizedBox(height: 15.h),
               //Description
               CustomTextField(
-                controller: TextEditingController(),
+                controller: bloc.descriptionController,
                 maxLines: 4,
                 keyboardType: TextInputType.multiline,
                 hintText: 'Description',
@@ -156,25 +132,11 @@ class CreateProductBottomSheetView extends StatelessWidget {
                     color: context.mycolors.textColorInButton),
               ),
               SizedBox(height: 15.h),
-              CustomCreateDropDown(
-                hintText: "Category",
-                items: [],
-                onChanged: (value) {},
-                value: "",
-              ),
+            const  ListOfCategory(),
               SizedBox(
                 height: 20.h,
               ),
-              CustomButton(
-                onPressed: () {},
-                backgroundColor: context.mycolors.textColorInButton,
-                lastRadius: 20,
-                threeRadius: 20,
-                textColor: context.mycolors.bluePinkDark,
-                text: 'Create Product',
-                width: MediaQuery.of(context).size.width,
-                height: 50.h,
-              ),
+             const customCreateProductButton(),
             ],
           ),
         ),
@@ -182,3 +144,4 @@ class CreateProductBottomSheetView extends StatelessWidget {
     );
   }
 }
+

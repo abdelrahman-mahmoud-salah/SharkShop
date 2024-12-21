@@ -32,9 +32,9 @@ class CustomCreateDropDown extends StatelessWidget {
         child: DropdownButton<String>(
           iconSize: 30,
           borderRadius: BorderRadius.circular(12),
-          dropdownColor: context.mycolors.bluePinkLight!,
+          dropdownColor: context.mycolors.bluePinkDark!,
           style: TextStyle(
-            color: Colors.black,
+            color: context.mycolors.textColorInButton,
             fontSize: 14.sp,
             fontWeight: FontWeight.w600,
           ),
@@ -44,7 +44,7 @@ class CustomCreateDropDown extends StatelessWidget {
             color: Colors.white,
           ),
           onChanged: onChanged,
-          value: items.isNotEmpty ? value : null,
+          value: items!.isNotEmpty ? value : null,
           isExpanded: true,
           hint: TextApp(
             text: hintText,
@@ -53,7 +53,7 @@ class CustomCreateDropDown extends StatelessWidget {
               color: context.mycolors.textColorInButton,
             ),
           ),
-          items: items.map<DropdownMenuItem<String>>((String value) {
+          items: items!.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               onTap: () {},
               value: value,
@@ -62,6 +62,7 @@ class CustomCreateDropDown extends StatelessWidget {
                 theme: context.textStyle.copyWith(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
+                  color: context.mycolors.textColorInButton,
                 ),
               ),
             );

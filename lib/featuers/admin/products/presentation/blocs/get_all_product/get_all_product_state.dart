@@ -1,26 +1,27 @@
 import 'package:equatable/equatable.dart';
-import '../../../data/models/product_repo_model.dart';
+import '../../../data/models/get_all_product/product_repo_model.dart';
 
-enum GetAllProductStateValues { 
+enum AllProductStateValues { 
   initial,
   loading,
   success,
   error,
+  empty
 }
 
-class GetAllProductState extends Equatable {
-  const GetAllProductState(
+class AllProductState extends Equatable {
+  const AllProductState(
       {this.status, this.errorMessage,this.products});
-  final GetAllProductStateValues? status;
+  final AllProductStateValues? status;
   final List< ProductRepoModel>? products;
  
   final String? errorMessage;
-  GetAllProductState copyWith({
-    GetAllProductStateValues? status,
+  AllProductState copyWith({
+    AllProductStateValues? status,
  List< ProductRepoModel>? productRepoModel,
     String? errorMessage,
   }) =>
-      GetAllProductState(
+      AllProductState(
         products: productRepoModel??this.products,
         status: status ?? this.status,
         errorMessage: errorMessage ?? this.errorMessage,
@@ -31,6 +32,6 @@ class GetAllProductState extends Equatable {
   List<Object?> get props => [status, errorMessage,products];
 }
 
-class InitialGetAllProductState extends GetAllProductState {
-  const InitialGetAllProductState() : super(status:GetAllProductStateValues.initial );
+class InitialGetAllProductState extends AllProductState {
+  const InitialGetAllProductState() : super(status:AllProductStateValues.initial );
 }

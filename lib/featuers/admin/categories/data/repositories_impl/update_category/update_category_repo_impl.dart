@@ -10,6 +10,6 @@ class UpdateCategoryRepoImpl implements UpdateCategoryRepository {
   @override
   // ignore: non_constant_identifier_names
   Future<ApiResult<CreateCategoryModelRepo>> UpdateCategory(
-          {required int id, required CreateCatecoryModelRequest model}) =>
+          {required String id, required CreateCatecoryModelRequest model}) =>
       _categoryRemoteImpl.updateCategory(id: id, model: model);
 }

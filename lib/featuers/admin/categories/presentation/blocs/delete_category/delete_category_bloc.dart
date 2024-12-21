@@ -8,17 +8,16 @@ class DeleteCategoryBloc
     extends Bloc<DeleteCategoryEvent, DeleteCategoryState> {
   DeleteCategoryBloc(this._deleteCategoryUseCase)
       : super(const DeleteCategoryIntialState()) {
-    on<DeleteCategoryEvent>(deleteCategory);
+    on<DeleteCategoryWithId>(deleteCategory);
   }
   final DeleteCategoryUseCase _deleteCategoryUseCase;
   String id = '';
-  FutureOr<void> deleteCategory(event, emit) async {
-    print(event.toString());
-    
-    emit(const DeleteCategoryState()
-        .copyWith(state: DeleteCategoryValueState.loading, loading: id));
-
-    var result = await _deleteCategoryUseCase.call(id);
+  FutureOr<void> deleteCategory(DeleteCategoryWithId event, emit) async {
+    if (event.Id == id) {
+      emit(const DeleteCategoryState().copyWith(
+          state: DeleteCategoryValueState.loading, loading: event.Id));
+    }
+    var result = await _deleteCategoryUseCase.call(event.Id);
     result.when(
       success: (data) {
         emit(const DeleteCategoryState()

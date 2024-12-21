@@ -13,9 +13,8 @@ class AddCategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      backgroundColor: context.mycolors.mainColor,
+    return Scaffold(
+      backgroundColor: context.mycolors.mainColor!,
       appBar: AdminAppBar(
         title: context.lang.categories,
         isMain: true,
@@ -26,6 +25,6 @@ class AddCategoryScreen extends StatelessWidget {
           ..add(const GetallcategoryEvent.getAllCategry(isloading: true)),
         child: const AddCategoryBoody(),
       ),
-    ));
+    );
   }
 }

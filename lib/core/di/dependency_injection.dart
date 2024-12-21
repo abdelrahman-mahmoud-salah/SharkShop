@@ -1,4 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/featuers/admin/products/data/data_source/remote/create_product/create_product_remote.dart';
+import 'package:flutter_application_2/featuers/admin/products/data/data_source/remote/create_product/create_product_remote_impl.dart';
+import 'package:flutter_application_2/featuers/admin/products/data/data_source/remote/delete_product/delete_product_remote.dart';
+import 'package:flutter_application_2/featuers/admin/products/data/data_source/remote/delete_product/delete_product_remote_impl.dart';
+import 'package:flutter_application_2/featuers/admin/products/data/data_source/remote/update_product/update_product_remote.dart';
+import 'package:flutter_application_2/featuers/admin/products/data/data_source/remote/update_product/update_product_remote_impl.dart';
+import 'package:flutter_application_2/featuers/admin/products/data/repositories_impl/create_product/create_product_repo_impl.dart';
+import 'package:flutter_application_2/featuers/admin/products/data/repositories_impl/delete_product/delete_product_repo_impl.dart';
+import 'package:flutter_application_2/featuers/admin/products/data/repositories_impl/update_product/update_product_repo_impl.dart';
+import 'package:flutter_application_2/featuers/admin/products/domain/repositories/create_product/create_product_repo.dart';
+import 'package:flutter_application_2/featuers/admin/products/domain/repositories/delete/delete_product_repo.dart';
+import 'package:flutter_application_2/featuers/admin/products/domain/repositories/update/update_product_repo.dart';
+import 'package:flutter_application_2/featuers/admin/products/domain/use_cases/create_product/create_product_use_case.dart';
+import 'package:flutter_application_2/featuers/admin/products/domain/use_cases/delete/delete_product_use_case.dart';
+import 'package:flutter_application_2/featuers/admin/products/domain/use_cases/update/update_product_use_case.dart';
+import 'package:flutter_application_2/featuers/admin/products/presentation/blocs/delete_product/delete_product_bloc.dart';
+import 'package:flutter_application_2/featuers/admin/products/presentation/blocs/update_product/update_product_bloc.dart';
 import '../app/Appcubit/app_cubit.dart';
 import '../app/upload_image/cubit/upload_image_cubit.dart';
 import '../app/upload_image/data_source/upload_image_data_source.dart';
@@ -74,10 +91,44 @@ Future<void> _initNumberProduct() async {
     ..registerFactory<ProductNumberBloc>(
       () => ProductNumberBloc(sl<GetAllProductUsecase>()),
     )
-    ..registerFactory<GetAllProductBloc>(
-      () => GetAllProductBloc(sl<GetAllProductUsecase>()),
+    ..registerLazySingleton<CreateProductRemote>(
+      () => CreateProductRemoteImpl(sl<ApiManager>()),
     )
-    ;
+    ..registerLazySingleton<CreateProductRepo>(
+      () => CreateProductRepoImpl(sl<CreateProductRemote>()),
+    )
+    ..registerLazySingleton<CreateProductUseCase>(
+      () => CreateProductUseCase(sl<CreateProductRepo>()),
+    )
+    ..registerLazySingleton<UpdateProductRemote>(
+      () => UpdateProductRemoteImpl(sl<ApiManager>()),
+    )
+    ..registerLazySingleton<UpdateProductRepo>(
+      () => UpdateProductRepoImpl(sl<UpdateProductRemote>()),
+    )
+    ..registerLazySingleton<UpdateProductUseCase>(
+      () => UpdateProductUseCase(sl<UpdateProductRepo>()),
+    )
+    ..registerLazySingleton<DeleteProductRemote>(
+      () => DeleteProductRemoteImpl(sl<ApiService>()),
+    )
+    ..registerLazySingleton<DeleteProductRepo>(
+      () => DeleteProductRepoImpl(sl<DeleteProductRemote>()),
+    )
+    ..registerLazySingleton<DeleteProductUseCase>(
+      () => DeleteProductUseCase(sl<DeleteProductRepo>()),
+    )
+    ..registerFactory<DeleteProductBloc>(
+      () => DeleteProductBloc(sl<DeleteProductUseCase>()),
+    )
+    ..registerFactory<UpdateProductBloc>(
+      () => UpdateProductBloc(sl<UpdateProductUseCase>()),
+    )
+    ..registerFactory<AllProductBloc>(
+      () => AllProductBloc(
+          getAllProductUsecase: sl<GetAllProductUsecase>(),
+          createProductUseCase: sl<CreateProductUseCase>()),
+    );
 }
 
 Future<void> _ALlCategories() async {

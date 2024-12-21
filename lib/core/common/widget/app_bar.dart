@@ -20,16 +20,15 @@ class AdminAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      
       backgroundColor: backgroundColor,
       centerTitle: true,
       surfaceTintColor: Colors.transparent,
       title: TextApp(
         text: title,
         theme: context.textStyle.copyWith(
-          fontSize: 18.sp,
+          fontSize: 25.sp,
           fontFamily: FontFamilyHelper.geLocalozedFontFamily(),
-          fontWeight:FontWeight.bold,
+          fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
       ),
