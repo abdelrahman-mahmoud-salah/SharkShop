@@ -41,7 +41,6 @@
     "categories":"categories",
     "allcategories":"All categories ",
     "add":"Add",
-    "users":"users",
     "error":"error",
     "delete":"Delete",
     "edit":"Edit",
@@ -60,5 +59,12 @@
     "not_updated":"You don't have been Update in successfully ,try again",
     "create_product":"Create Product",
     "create_a_photos":"Create a photos",
-    "error_allproducts":"An error occurred while fetching products"
+    "error_allproducts":"An error occurred while fetching products",
+    "users":"Users",
+    "search":"search",
+    "name":"Name",
+    "email":"Email",
+    "empty_users":"Not Found Any Users"
+
+
 }

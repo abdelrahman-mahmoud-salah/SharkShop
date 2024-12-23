@@ -16,6 +16,18 @@ import 'package:flutter_application_2/featuers/admin/products/domain/use_cases/d
 import 'package:flutter_application_2/featuers/admin/products/domain/use_cases/update/update_product_use_case.dart';
 import 'package:flutter_application_2/featuers/admin/products/presentation/blocs/delete_product/delete_product_bloc.dart';
 import 'package:flutter_application_2/featuers/admin/products/presentation/blocs/update_product/update_product_bloc.dart';
+import 'package:flutter_application_2/featuers/admin/users/data/data_sources/remote/delete_user/delete_user_remote.dart';
+import 'package:flutter_application_2/featuers/admin/users/data/data_sources/remote/delete_user/delete_user_remote_impl.dart';
+import 'package:flutter_application_2/featuers/admin/users/data/data_sources/remote/get_all_user/get_all_user_remote.dart';
+import 'package:flutter_application_2/featuers/admin/users/data/data_sources/remote/get_all_user/get_all_user_remote_impl.dart';
+import 'package:flutter_application_2/featuers/admin/users/data/repositories_impl/delete_user/delete_user_repo_impl.dart';
+import 'package:flutter_application_2/featuers/admin/users/data/repositories_impl/get_all_user.dart/get_all_user_repo_impl.dart';
+import 'package:flutter_application_2/featuers/admin/users/domain/repositories/delete_user/delete_user_repo.dart';
+import 'package:flutter_application_2/featuers/admin/users/domain/repositories/get_all_user_repo/get_all_user_repo.dart';
+import 'package:flutter_application_2/featuers/admin/users/domain/use_cases/delete_user/delete_user_use_case.dart';
+import 'package:flutter_application_2/featuers/admin/users/domain/use_cases/get_all_user/get_all_user_use_case.dart';
+import 'package:flutter_application_2/featuers/admin/users/presentation/blocs/delete_user/delete_user_bloc.dart';
+import 'package:flutter_application_2/featuers/admin/users/presentation/blocs/get_all_user/all_user_bloc.dart';
 import '../app/Appcubit/app_cubit.dart';
 import '../app/upload_image/cubit/upload_image_cubit.dart';
 import '../app/upload_image/data_source/upload_image_data_source.dart';
@@ -62,6 +74,7 @@ Future<void> setupInjector() async {
   await _initCore();
   await _ALlCategories();
   await _initNumberProduct();
+  await _AllUsersAdmin();
 }
 
 Future<void> _initCore() async {
@@ -179,6 +192,31 @@ Future<void> _ALlCategories() async {
     ..registerFactory<UpdateCategoryBloc>(
       () => UpdateCategoryBloc(sl<UpdateCategoryUseCase>()),
     );
+}
+
+Future<void> _AllUsersAdmin() async {
+  sl
+    ..registerLazySingleton<GetAllUserRemote>(
+      () => GetAllUserRemoteImpl(sl<ApiManager>()),
+    )
+    ..registerLazySingleton<GetAllUserRepo>(
+      () => GetAllUserRepoImpl(sl<GetAllUserRemote>()),
+    )
+    ..registerLazySingleton<GetAllUserUseCase>(
+        () => GetAllUserUseCase(sl<GetAllUserRepo>()))
+    ..registerLazySingleton<DeleteUserRemote>(
+        () => DeleteUserRemoteImpl(sl<ApiService>()))
+    ..registerLazySingleton<DeleteUserRepo>(
+        () => DeleteUserRepoImpl(sl<DeleteUserRemote>()))
+    ..registerLazySingleton<DeleteUserUseCase>(
+      () => DeleteUserUseCase(sl<DeleteUserRepo>()),
+    )
+    ..registerFactory<DeleteUserBloc>(() => DeleteUserBloc(
+          deleteUserUseCase: sl<DeleteUserUseCase>(),
+        ))
+    ..registerFactory<AllUserBloc>(() => AllUserBloc(
+          getAllUserUseCase: sl<GetAllUserUseCase>(),
+        ));
 }
 
 // Future<void> _initLogin() async {

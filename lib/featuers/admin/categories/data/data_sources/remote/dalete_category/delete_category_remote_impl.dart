@@ -1,6 +1,6 @@
 import '../../../../../../../core/services/api_error_handler.dart';
 import '../../../../../../../core/services/api_services.dart';
-import '../../../../../../../core/services/graphql/category/delete_category.dart';
+import '../../../../../../../core/services/graphql/admin/category/delete_category.dart';
 import 'delete_category_remote.dart';
 
 class DeleteCategoryRemoteImpl implements DeleteCategoryRemote {

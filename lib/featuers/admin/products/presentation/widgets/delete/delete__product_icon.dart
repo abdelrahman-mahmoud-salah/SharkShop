@@ -29,10 +29,14 @@ class DeleteProductIcon extends StatelessWidget {
           if (state.productId == id) {
             return const Center(child: CircularProgressIndicator());
           } else {
-            return const Icon(
-              Icons.delete_rounded,
-              color: Colors.red,
-            );
+            return IconButton(
+                onPressed: () {
+                  context.read<DeleteProductBloc>().add(DeleteProduct(id: id));
+                },
+                icon: const Icon(
+                  Icons.delete_rounded,
+                  color: Colors.red,
+                ));
           }
         } else if (state.stateValues == DeleteProductStateValues.success) {
           return IconButton(

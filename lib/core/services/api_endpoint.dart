@@ -8,4 +8,5 @@ class ApiEndpoint {
   static const String createCategory = 'api/v1/categories/';
   static const String updateCategory = 'api/v1/categories/{id}';
   static const String uploadImage = 'api/v1/files/upload';
+  static const String getAllUser = 'api/v1/users/';
 }
