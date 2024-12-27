@@ -28,6 +28,12 @@ import 'package:flutter_application_2/featuers/admin/users/domain/use_cases/dele
 import 'package:flutter_application_2/featuers/admin/users/domain/use_cases/get_all_user/get_all_user_use_case.dart';
 import 'package:flutter_application_2/featuers/admin/users/presentation/blocs/delete_user/delete_user_bloc.dart';
 import 'package:flutter_application_2/featuers/admin/users/presentation/blocs/get_all_user/all_user_bloc.dart';
+import 'package:flutter_application_2/featuers/custom/profile/data/data_sources/remote/user_info/user_info_remote.dart';
+import 'package:flutter_application_2/featuers/custom/profile/data/data_sources/remote/user_info/user_info_remote_impl.dart';
+import 'package:flutter_application_2/featuers/custom/profile/data/repositories_impl/user_info/user_info_repo_impl.dart';
+import 'package:flutter_application_2/featuers/custom/profile/domain/repositories/user_info/user_info_repo.dart';
+import 'package:flutter_application_2/featuers/custom/profile/domain/use_cases/user_info/user_info_use_case.dart';
+import 'package:flutter_application_2/featuers/custom/profile/presentation/blocs/bloc/user_info_bloc.dart';
 import '../app/Appcubit/app_cubit.dart';
 import '../app/upload_image/cubit/upload_image_cubit.dart';
 import '../app/upload_image/data_source/upload_image_data_source.dart';
@@ -75,6 +81,7 @@ Future<void> setupInjector() async {
   await _ALlCategories();
   await _initNumberProduct();
   await _AllUsersAdmin();
+  await _initProfileUser();
 }
 
 Future<void> _initCore() async {
@@ -144,6 +151,7 @@ Future<void> _initNumberProduct() async {
     );
 }
 
+// ignore: non_constant_identifier_names
 Future<void> _ALlCategories() async {
   sl
     ..registerLazySingleton<GetAllCatedoryRemote>(
@@ -194,6 +202,7 @@ Future<void> _ALlCategories() async {
     );
 }
 
+// ignore: non_constant_identifier_names
 Future<void> _AllUsersAdmin() async {
   sl
     ..registerLazySingleton<GetAllUserRemote>(
@@ -219,6 +228,21 @@ Future<void> _AllUsersAdmin() async {
         ));
 }
 
+Future<void> _initProfileUser() async {
+  sl
+    ..registerLazySingleton<UserInfoRemote>(
+      () => UserInfoRemoteImpl(sl<ApiManager>()),
+    )
+    ..registerLazySingleton<UserInfoRepo>(
+      () => UserInfoRepoImpl(sl<UserInfoRemote>()),
+    )
+    ..registerLazySingleton<UserInfoUseCase>(
+      () => UserInfoUseCase(sl<UserInfoRepo>()),
+    )
+    ..registerFactory<UserInfoBloc>(
+      () => UserInfoBloc(sl<UserInfoUseCase>()),
+    );
+}
 // Future<void> _initLogin() async {
 //   sl
 //     ..registerFactory(

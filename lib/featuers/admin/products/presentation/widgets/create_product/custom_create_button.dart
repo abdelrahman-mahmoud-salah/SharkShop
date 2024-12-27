@@ -8,6 +8,7 @@ import 'package:flutter_application_2/featuers/admin/products/presentation/blocs
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: camel_case_types
 class customCreateProductButton extends StatelessWidget {
   const customCreateProductButton({
     super.key,

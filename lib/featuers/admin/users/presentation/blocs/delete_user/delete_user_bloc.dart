@@ -12,6 +12,7 @@ class DeleteUserBloc extends Bloc<UserEvent, DeleteUserState> {
   }
 
   final DeleteUserUseCase deleteUserUseCase;
+  // ignore: non_constant_identifier_names
   FutureOr<void> DeleteUser(DeleteUserEvent event, emit) async {
     emit(state.copyWith(state: DeleteUserStatevalue.loading));
 

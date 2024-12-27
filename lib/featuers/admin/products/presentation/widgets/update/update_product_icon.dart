@@ -6,16 +6,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/common/bottomsheet/custom_bottom_sheet.dart';
 import 'update_product_bottom_sheet_view.dart';
 
+// ignore: must_be_immutable
 class UpdateProductIcon extends StatelessWidget {
   UpdateProductIcon(
       {super.key,
       required this.image,
+      // ignore: non_constant_identifier_names
       this.Title,
       this.price,
       this.description,
       this.category,
       this.categoryId, required this.id});
   List<String> image;
+  // ignore: non_constant_identifier_names
   final String? Title;
   final String? price;
   final String? description;

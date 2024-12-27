@@ -9,7 +9,6 @@ import '../../blocs/update_category/update_category_bloc.dart';
 import 'update_image_category.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UpdateCategoryView extends StatefulWidget {
   const UpdateCategoryView({super.key, required this.id, required this.image});

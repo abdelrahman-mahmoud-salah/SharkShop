@@ -34,7 +34,7 @@ BlocBuilder<ProductNumberBloc, ProductNumberState> allProductNumber() {
                   .copyWith(color: context.mycolors.mainColor)),
         );
       }
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     },
   );
 }

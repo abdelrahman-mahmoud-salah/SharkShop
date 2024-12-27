@@ -7,6 +7,7 @@ class DeleteCategoryEvent extends Equatable {
 }
 
 class DeleteCategoryWithId extends DeleteCategoryEvent {
+  // ignore: non_constant_identifier_names
   final String Id;
   const DeleteCategoryWithId(this.Id);
    @override

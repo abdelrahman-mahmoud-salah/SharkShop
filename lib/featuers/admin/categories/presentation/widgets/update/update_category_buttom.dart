@@ -6,7 +6,6 @@ import '../../blocs/update_category/update_category_bloc.dart';
 import '../../blocs/update_category/update_category_event.dart';
 import '../../blocs/update_category/update_category_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CreateCategoryButtom extends StatelessWidget {
@@ -45,7 +44,7 @@ class CreateCategoryButtom extends StatelessWidget {
         } else {
           return CustomButton(
               onPressed: () {
-                print(id);
+             
                 context
                     .read<UpdateCategoryBloc>()
                     .add(UpdateCategoryEvent.updateCategory(categoryId: id));

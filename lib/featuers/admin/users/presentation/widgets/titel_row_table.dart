@@ -3,6 +3,7 @@ import 'package:flutter_application_2/core/common/widget/text_app.dart';
 import 'package:flutter_application_2/core/extension/context_extention.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class TitelRowTable extends StatelessWidget {
   TitelRowTable(
       {super.key, this.fontSize, required this.icon, required this.text});

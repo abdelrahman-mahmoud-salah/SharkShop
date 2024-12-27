@@ -21,9 +21,6 @@ class UpdateProductBloc extends Bloc<UpdateProductEvent, UpdateProductState> {
   FutureOr<void> updateProduct(UpdateProductAdmin event, emit) async {
     emit(const UpdateProductState()
         .copyWith(status: UpdateProductStateValues.loading));
-    print("is Image in bloc:" + lisImages.length.toString());
-    print("is titel  in bloc:" + titleController.text);
-    print("is price in bloc:" + priceController.text);
 
     var product = await _updateProductUseCase.call(
         event.id,

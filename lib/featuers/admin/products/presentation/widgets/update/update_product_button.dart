@@ -28,8 +28,7 @@ class UpdateProductButton extends StatelessWidget {
         } else {
           return CustomButton(
             onPressed: () {
-              print("update product");
-              print("id in view: $id");
+             
               _validUpdateProduct(context);
             },
             backgroundColor: context.mycolors.textColorInButton,

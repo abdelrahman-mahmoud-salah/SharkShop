@@ -3,7 +3,6 @@ import '../../../../../core/common/widget/custom_linear_bottom.dart';
 import '../../../../../core/common/widget/text_app.dart';
 import '../../../../../core/extension/context_extention.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignupButton extends StatelessWidget {
   const SignupButton({

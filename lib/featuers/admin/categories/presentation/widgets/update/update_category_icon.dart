@@ -7,7 +7,6 @@ import '../../blocs/update_category/update_category_bloc.dart';
 import 'update_category_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UpdateCategoryIcon extends StatelessWidget {
   const UpdateCategoryIcon({super.key, required this.id, required this.image});

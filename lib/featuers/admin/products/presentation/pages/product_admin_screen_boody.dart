@@ -109,7 +109,7 @@ class ProductAdminScreenBoody extends StatelessWidget {
                           return EmptyScreen(
                               title: context.lang.empty_category);
                         } else {
-                          return SizedBox.shrink();
+                          return const SizedBox.shrink();
                         }
                       },
                     ),

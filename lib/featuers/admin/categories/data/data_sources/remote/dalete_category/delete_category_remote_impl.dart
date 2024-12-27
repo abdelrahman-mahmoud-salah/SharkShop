@@ -4,7 +4,7 @@ import '../../../../../../../core/services/graphql/admin/category/delete_categor
 import 'delete_category_remote.dart';
 
 class DeleteCategoryRemoteImpl implements DeleteCategoryRemote {
-  ApiService _apiService;
+  final ApiService _apiService;
   DeleteCategoryRemoteImpl(this._apiService);
   @override
   Future<ApiResult<void>> deleteCategory(String id) async {

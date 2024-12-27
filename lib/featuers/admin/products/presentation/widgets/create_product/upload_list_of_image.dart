@@ -3,7 +3,6 @@ import 'package:flutter_application_2/core/app/upload_image/cubit/upload_image_c
 import 'package:flutter_application_2/core/common/toast/show_toast.dart';
 import 'package:flutter_application_2/core/extension/context_extention.dart';
 import 'package:flutter_application_2/featuers/admin/products/presentation/blocs/get_all_product/get_all_product_bloc.dart';
-import 'package:flutter_application_2/featuers/admin/products/presentation/pages/product_admin_screen.dart';
 import 'package:flutter_application_2/featuers/admin/products/presentation/widgets/create_product/selected_product_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,7 +58,7 @@ class ListOfImageViewAndLogic extends StatelessWidget {
           },
           orElse: () {
             context.read<AllProductBloc>().lisImages =
-                context.read<UploadImageCubit>().imageList ?? [];
+                context.read<UploadImageCubit>().imageList;
             return SeletetYourProductImage(
               index: index,
               onTap: () {

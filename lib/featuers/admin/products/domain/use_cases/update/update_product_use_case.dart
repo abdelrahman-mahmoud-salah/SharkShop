@@ -4,7 +4,7 @@ import 'package:flutter_application_2/featuers/admin/products/data/models/update
 import 'package:flutter_application_2/featuers/admin/products/domain/repositories/update/update_product_repo.dart';
 
 class UpdateProductUseCase {
-  UpdateProductRepo _productRepo;
+  final UpdateProductRepo _productRepo;
   UpdateProductUseCase(this._productRepo);
   Future<ApiResult<ProductRepoModel>> call(
           String id, UpdateProductRequestModel model) =>

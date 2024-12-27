@@ -9,7 +9,6 @@ import 'crate_category_bottom.dart';
 import 'upload_category_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CreateCategoryBottomSheetWidget extends StatelessWidget {
   const CreateCategoryBottomSheetWidget({

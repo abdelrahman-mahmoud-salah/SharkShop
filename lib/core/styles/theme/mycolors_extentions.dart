@@ -86,7 +86,7 @@ class MyColors extends ThemeExtension<MyColors> {
   static const MyColors dark = MyColors(
     mainColor: ColorsDark.mainColor,
     bluePinkDark: ColorsDark.blueDark,
-    bluePinkLight: Color.fromARGB(255, 5, 179, 248),
+    bluePinkLight: ColorsDark.blueLight,
     textColorInButton: ColorsDark.white,
     textcolor: ColorsDark.white,
     textFormBorder: ColorsDark.blueLight,

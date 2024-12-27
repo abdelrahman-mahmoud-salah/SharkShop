@@ -22,7 +22,8 @@ class AllProductState extends Equatable {
     String? errorMessage,
   }) =>
       AllProductState(
-        products: productRepoModel??this.products,
+        // ignore: unnecessary_this
+        products: productRepoModel?? this.products ,
         status: status ?? this.status,
         errorMessage: errorMessage ?? this.errorMessage,
       );

@@ -1,9 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 enum ProductStatus {
+  // ignore: constant_identifier_names
   Initial,
+  // ignore: constant_identifier_names
   Loading,
+  // ignore: constant_identifier_names
   Success,
+  // ignore: constant_identifier_names
   Error,
 }
 

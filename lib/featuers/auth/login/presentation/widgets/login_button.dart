@@ -8,7 +8,6 @@ import '../bloc/login_event.dart';
 import '../bloc/login_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({

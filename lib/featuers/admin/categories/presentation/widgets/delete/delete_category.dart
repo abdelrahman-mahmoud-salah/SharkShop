@@ -10,8 +10,10 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 class DeleteCategoryIcon extends StatelessWidget {
   const DeleteCategoryIcon({
     super.key,
+    // ignore: non_constant_identifier_names
     required this.Id,
   });
+  // ignore: non_constant_identifier_names
   final String Id;
   @override
   Widget build(BuildContext context) {

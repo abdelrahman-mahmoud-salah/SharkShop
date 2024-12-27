@@ -14,7 +14,6 @@ class UpdateCategoryState extends Equatable {
       UpdateCategoryState(errorMessage: errorMessage, stateValue: stateValue,loading: loading);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [stateValue, errorMessage, loading];
 }
 

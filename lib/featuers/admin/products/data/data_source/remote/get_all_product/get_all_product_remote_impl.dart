@@ -5,7 +5,7 @@ import '../../../models/get_all_product/product_repo_model.dart';
 
 class GetAllProductRemoteImpl implements GetAllProductRemote {
   GetAllProductRemoteImpl(this._apiManager);
-  ApiManager _apiManager;
+  final ApiManager _apiManager;
   @override
   Future<ApiResult<List<ProductRepoModel>>> getAllProduct() async {
     try {

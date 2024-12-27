@@ -3,6 +3,7 @@ import '../../extension/context_extention.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
+// ignore: must_be_immutable
 class ErrorScreen extends StatelessWidget {
    ErrorScreen({
     super.key,

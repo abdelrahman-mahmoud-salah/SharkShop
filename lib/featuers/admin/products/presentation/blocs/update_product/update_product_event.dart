@@ -6,6 +6,7 @@ class UpdateProductEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+// ignore: must_be_immutable
 class UpdateProductAdmin extends UpdateProductEvent {
   String id;
   UpdateProductAdmin(this.id);

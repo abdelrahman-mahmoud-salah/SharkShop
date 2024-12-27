@@ -5,7 +5,7 @@ import '../../../domain/repositories/product_repo.dart';
 
 class GetAllProductRepoImpl implements GetAllProductRepo {
   GetAllProductRepoImpl(this._allCatedoryRemote);
-  GetAllProductRemote _allCatedoryRemote;
+  final GetAllProductRemote _allCatedoryRemote;
   @override
   Future<ApiResult<List<ProductRepoModel>>> getAllProduct() =>
       _allCatedoryRemote.getAllProduct();

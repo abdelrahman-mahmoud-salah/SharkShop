@@ -4,6 +4,7 @@ import 'package:flutter_application_2/featuers/admin/products/data/models/create
 import 'package:flutter_application_2/featuers/admin/products/data/models/create_product/create_product_request_model.dart';
 import 'package:flutter_application_2/featuers/admin/products/data/models/update/update_product_request_model.dart';
 import 'package:flutter_application_2/featuers/admin/users/data/models/get_all_user_repo_model.dart';
+import 'package:flutter_application_2/featuers/custom/profile/data/models/user_info_model_repo.dart';
 import '../app/upload_image/model/upload_image_response.dart';
 import 'api_endpoint.dart';
 import '../../featuers/admin/categories/data/models/create_category/create_catecory_model_request.dart';
@@ -53,6 +54,8 @@ abstract class ApiManager {
     ParseErrorLogger? errorLogger,
   }) = _ApiManager;
 
+  @GET(ApiEndpoint.userRole)
+  Future<UserInfoModelRepo> userInfo();
   @GET(ApiEndpoint.getallproduct)
   Future<List<ProductRepoModel>> getAllProduct();
   @GET(ApiEndpoint.getAllUser)

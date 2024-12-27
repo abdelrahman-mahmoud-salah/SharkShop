@@ -3,7 +3,6 @@ import '../../../../../core/common/widget/text_app.dart';
 import '../../../../../core/extension/context_extention.dart';
 import '../../../../../core/styles/fonts/font_family.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpTitle extends StatelessWidget {
   const SignUpTitle({super.key});

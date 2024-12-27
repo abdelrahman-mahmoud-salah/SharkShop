@@ -23,6 +23,7 @@ class GetAllUsersRepoModel extends GetAllUsersRepoModelEntities {
       _$GetAllUsersRepoModelFromJson(json);
 
   // Method for converting the model to JSON
+  @override
   Map<String, dynamic> toJson() => _$GetAllUsersRepoModelToJson(this);
 
   @override

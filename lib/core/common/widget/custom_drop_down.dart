@@ -44,7 +44,7 @@ class CustomCreateDropDown extends StatelessWidget {
             color: Colors.white,
           ),
           onChanged: onChanged,
-          value: items!.isNotEmpty ? value : null,
+          value: items.isNotEmpty ? value : null,
           isExpanded: true,
           hint: TextApp(
             text: hintText,
@@ -53,7 +53,7 @@ class CustomCreateDropDown extends StatelessWidget {
               color: context.mycolors.textColorInButton,
             ),
           ),
-          items: items!.map<DropdownMenuItem<String>>((String value) {
+          items: items.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               onTap: () {},
               value: value,

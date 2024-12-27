@@ -7,7 +7,6 @@ import '../widgets/sigin_up_formfield.dart';
 import '../widgets/sign_up_title.dart';
 import '../widgets/signup_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpBoody extends StatelessWidget {
   const SignUpBoody({super.key});

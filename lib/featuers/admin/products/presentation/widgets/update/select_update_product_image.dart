@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/core/app/upload_image/cubit/upload_image_cubit.dart';
 import 'package:flutter_application_2/core/extension/string_exetension.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SeletetUpdateYourProductImage extends StatelessWidget {

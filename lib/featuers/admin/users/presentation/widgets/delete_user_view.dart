@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/extension/context_extention.dart';
-import 'package:flutter_application_2/featuers/admin/users/domain/entities/get_all_user_repo_entities.dart';
 import 'package:flutter_application_2/featuers/admin/users/presentation/blocs/delete_user/delete_user_bloc.dart';
 import 'package:flutter_application_2/featuers/admin/users/presentation/blocs/delete_user/delete_user_event.dart';
 import 'package:flutter_application_2/featuers/admin/users/presentation/blocs/delete_user/delete_user_state.dart';
@@ -12,8 +11,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class DeleteUserView extends StatelessWidget {
   const DeleteUserView({
     super.key,
+    // ignore: non_constant_identifier_names
     required this.IdUser,
   });
+  // ignore: non_constant_identifier_names
   final String IdUser;
 
   @override
@@ -41,7 +42,6 @@ class DeleteUserView extends StatelessWidget {
               color: Colors.red,
             ),
             onPressed: () {
-              print(IdUser);
               context
                   .read<DeleteUserBloc>()
                   .add(DeleteUserEvent(userId: IdUser));

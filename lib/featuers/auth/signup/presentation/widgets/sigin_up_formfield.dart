@@ -3,7 +3,6 @@ import '../../../../../core/common/widget/text_from_field_app.dart';
 import '../../../../../core/extension/context_extention.dart';
 import '../../../../../core/utils/app_regex.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SiginUpFormfield extends StatelessWidget {
   const SiginUpFormfield({

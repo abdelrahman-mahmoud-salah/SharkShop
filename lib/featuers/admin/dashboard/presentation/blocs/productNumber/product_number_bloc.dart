@@ -21,7 +21,6 @@ GetAllProductUsecase productUsecase;
             numberOfProducts: data.length, status: ProductStatus.Success));
       },
       failure: (errorHandler) {
-        print(errorHandler);
         emit(ProductNumberState(
             status: ProductStatus.Error, errorMessage: errorHandler));
       },

@@ -48,7 +48,7 @@ MaterialApp changeThemeAndLocal(AppState state, AppCubit cubit) {
       locale: Locale(cubit.loca!),
       theme: cubit.theme == 'dark' ? themeDark() : themeLight(),
       onGenerateRoute: RoutingApp.onGenerate,
-      initialRoute: RoutesAppConst.homeAdmin,
+      initialRoute: RoutesAppConst.mainScreenUser,
       navigatorKey: sl<GlobalKey<NavigatorState>>(),
     );
   } else if (state ==
@@ -63,7 +63,7 @@ MaterialApp changeThemeAndLocal(AppState state, AppCubit cubit) {
       locale: Locale(cubit.loca!),
       theme: cubit.theme == 'dark' ? themeDark() : themeLight(),
       onGenerateRoute: RoutingApp.onGenerate,
-      initialRoute: RoutesAppConst.homeAdmin,
+      initialRoute: RoutesAppConst.mainScreenUser,
       navigatorKey: sl<GlobalKey<NavigatorState>>(),
     );
   } else {
@@ -75,7 +75,7 @@ MaterialApp changeThemeAndLocal(AppState state, AppCubit cubit) {
       locale: Locale(cubit.loca!),
       theme: cubit.theme == 'dark' ? themeDark() : themeLight(),
       onGenerateRoute: RoutingApp.onGenerate,
-      initialRoute: RoutesAppConst.homeAdmin,
+      initialRoute: RoutesAppConst.mainScreenUser,
       navigatorKey: sl<GlobalKey<NavigatorState>>(),
     );
   }

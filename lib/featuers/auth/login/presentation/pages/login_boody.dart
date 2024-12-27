@@ -8,7 +8,6 @@ import '../widgets/login_form_field.dart';
 import '../widgets/login_title.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginBoody extends StatelessWidget {
   const LoginBoody({super.key});

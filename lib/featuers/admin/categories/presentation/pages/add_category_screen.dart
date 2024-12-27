@@ -6,7 +6,6 @@ import '../blocs/get_all_category_bloc/getallcategory_bloc.dart';
 import '../blocs/get_all_category_bloc/getallcategory_event.dart';
 import 'add_category_boody.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddCategoryScreen extends StatelessWidget {
   const AddCategoryScreen({super.key});

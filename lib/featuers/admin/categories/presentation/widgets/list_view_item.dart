@@ -67,7 +67,7 @@ class ListViewOfCategoruItem extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  //TODO:enter All The model
+                
                   return CategoryItem(
                     image: state.categories![index].image ?? "",
                     name: state.categories![index].name ?? "",

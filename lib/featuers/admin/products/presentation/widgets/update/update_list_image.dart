@@ -74,8 +74,7 @@ class UpdateListOfImages extends StatelessWidget {
                           indexId: index,
                           productImageList: image,
                         );
-                    print("list of image is : ${image.length}");
-                    print("list of cubit image is : ${image.length}");
+                    
                     bloc.lisImages =
                         context.read<UploadImageCubit>().imageUpdateList.isEmpty?
                             image:context.read<UploadImageCubit>().imageUpdateList;

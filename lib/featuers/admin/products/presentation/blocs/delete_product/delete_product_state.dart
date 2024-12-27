@@ -7,6 +7,7 @@ enum DeleteProductStateValues {
   error,
 }
 
+// ignore: must_be_immutable
 class DeleteProductState extends Equatable {
   final DeleteProductStateValues? stateValues;
  String? productId;
