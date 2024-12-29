@@ -28,6 +28,8 @@ import 'package:flutter_application_2/featuers/admin/users/domain/use_cases/dele
 import 'package:flutter_application_2/featuers/admin/users/domain/use_cases/get_all_user/get_all_user_use_case.dart';
 import 'package:flutter_application_2/featuers/admin/users/presentation/blocs/delete_user/delete_user_bloc.dart';
 import 'package:flutter_application_2/featuers/admin/users/presentation/blocs/get_all_user/all_user_bloc.dart';
+import 'package:flutter_application_2/featuers/custom/home/presentation/blocs/get_all_category_bloc/getallcategory_bloc.dart';
+import 'package:flutter_application_2/featuers/custom/home/presentation/blocs/get_all_product/get_all_product_bloc.dart';
 import 'package:flutter_application_2/featuers/custom/profile/data/data_sources/remote/user_info/user_info_remote.dart';
 import 'package:flutter_application_2/featuers/custom/profile/data/data_sources/remote/user_info/user_info_remote_impl.dart';
 import 'package:flutter_application_2/featuers/custom/profile/data/repositories_impl/user_info/user_info_repo_impl.dart';
@@ -148,6 +150,11 @@ Future<void> _initNumberProduct() async {
       () => AllProductBloc(
           getAllProductUsecase: sl<GetAllProductUsecase>(),
           createProductUseCase: sl<CreateProductUseCase>()),
+    )
+    ..registerFactory<AllProductCustomerBloc>(
+      () => AllProductCustomerBloc(
+          getAllProductUsecase: sl<GetAllProductUsecase>(),
+         ),
     );
 }
 
@@ -166,6 +173,8 @@ Future<void> _ALlCategories() async {
     ..registerFactory<GetallcategoryBloc>(
       () => GetallcategoryBloc(sl<GetAllCategoryUseCase>()),
     )
+    ..registerFactory<GetallcategoryInCustomerBloc>(
+        () => GetallcategoryInCustomerBloc(sl<GetAllCategoryUseCase>()))
     ..registerLazySingleton<CreateCategoryRemoteData>(
       () => CreateCategoryRemoteImpl(sl<ApiManager>()),
     )

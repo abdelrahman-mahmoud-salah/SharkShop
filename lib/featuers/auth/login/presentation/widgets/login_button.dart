@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/core/routes/routes_app_const.dart';
 import '../../../../../core/common/widget/custom_linear_bottom.dart';
 import '../../../../../core/common/widget/text_app.dart';
 import '../../../../../core/extension/context_extention.dart';
@@ -21,6 +22,7 @@ class LoginButton extends StatelessWidget {
         if (state.screenStatus == LoginStateValue.error) {
           return ShowToast.showToastErrorTop(message: state.failures!);
         } else if (state.screenStatus == LoginStateValue.success) {
+          context.pushNamed(pageName: RoutesAppConst.mainScreenUser);
           return ShowToast.showToastSuccessTop(
               message: context.lang.logged_successfully);
         }
