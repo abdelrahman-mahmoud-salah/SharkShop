@@ -64,6 +64,9 @@
      "empty_users":"لا يوجد مستخدمين",
      "search":"البحث",
      "name":"الاسم",
-     "email":"البريد الالكتروني"
+     "email":"البريد الالكتروني",
+     "your_Favorite":"المفضله",
+        "empty_favorite":"لا يوجد منتجات مفضله",
+        "your_Notification":"الاشعارات"
 
 }

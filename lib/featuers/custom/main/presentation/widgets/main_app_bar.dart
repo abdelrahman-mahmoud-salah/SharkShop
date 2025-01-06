@@ -52,7 +52,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               return CustomFadeInRight(
                 duration: 800,
                 child: TextApp(
-                  text: 'Your Favorite',
+                  text: context.lang.your_Favorite,
                   theme: context.textStyle.copyWith(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
@@ -64,7 +64,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               return CustomFadeInRight(
                 duration: 800,
                 child: TextApp(
-                  text: 'Notifications',
+                  text: context.lang.your_Notification,
                   theme: context.textStyle.copyWith(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,

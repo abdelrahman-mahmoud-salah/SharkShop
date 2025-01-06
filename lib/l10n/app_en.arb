@@ -65,6 +65,9 @@
     "name":"Name",
     "email":"Email",
     "empty_users":"Not Found Any Users"
-
+    ,
+    "your_Favorite":"Your Favorite",
+       "empty_favorite":" not found any favorites",
+       "your_Notification":"Your Notification"
 
 }
