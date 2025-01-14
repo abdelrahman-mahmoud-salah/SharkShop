@@ -4,7 +4,8 @@ enum StatesApp {
   init,
   changeThemeMode,
   changeLocalization,
-  checkConectivityNetworking,
+  conection,
+  notConection
 }
 
 class AppState extends Equatable {
@@ -13,12 +14,12 @@ class AppState extends Equatable {
   final StatesApp? statesApp;
   final String? thememode;
   final String? localization;
-  final String? connected;
+  final bool? connected;
   AppState copywith(
       {final StatesApp? statesApp,
       final String? thememode,
       final String? localization,
-      final String? connected}) {
+      final bool? connected}) {
     return AppState(
         statesApp: statesApp ?? this.statesApp,
         thememode: thememode ?? this.thememode,
