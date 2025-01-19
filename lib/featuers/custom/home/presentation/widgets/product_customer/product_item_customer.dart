@@ -3,6 +3,9 @@ import 'package:flutter_application_2/core/common/widget/cutom_container_admin.d
 import 'package:flutter_application_2/core/extension/context_extention.dart';
 import 'package:flutter_application_2/featuers/admin/products/presentation/widgets/cashed_network_image.dart';
 import 'package:flutter_application_2/featuers/admin/products/presentation/widgets/text_item_product.dart';
+import 'package:flutter_application_2/featuers/custom/favourite/presentation/blocs/cubit/favourites_cubit.dart';
+import 'package:flutter_application_2/featuers/custom/favourite/presentation/blocs/cubit/favourites_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,11 +36,19 @@ class ProductsCustomerItem extends StatelessWidget {
         width: 0.w,
         child: Column(
           children: [
-        const    Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ShareIcon(),
-                FavoriteIcon()
+                const ShareIcon(),
+                FavoriteIcon(
+                  productId: productId,
+                  categoryId: categoryId,
+                  categoryName: categoryName,
+                  description: description,
+                  image: image,
+                  price: price,
+                  title: title,
+                )
               ],
             ),
             Flexible(
@@ -66,16 +77,49 @@ class ProductsCustomerItem extends StatelessWidget {
 class FavoriteIcon extends StatelessWidget {
   const FavoriteIcon({
     super.key,
+    this.title,
+    this.categoryName,
+    this.description,
+    this.price,
+    this.categoryId,
+    this.image,
+    required this.productId,
   });
-
+  final String? title;
+  final String? categoryName;
+  final String? description;
+  final String? price;
+  final int productId;
+  final int? categoryId;
+  final List<String>? image;
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-        onPressed: () {},
-        icon: Icon(
-          Icons.favorite_border,
-          color: context.mycolors.textColorInButton,
-        ));
+    return BlocBuilder<FavouritesCubit, FavouritesState>(
+      builder: (context, state) {
+        return IconButton(
+            onPressed: () {
+              context.read<FavouritesCubit>().managementFavourites(
+                    productId: productId.toString(),
+                    categoryName: categoryName,
+                    description: description,
+                    image: image![0],
+                    price: price,
+                    title: title,
+                  );
+            },
+            icon: context
+                    .read<FavouritesCubit>()
+                    .isFavorites(productId.toString())
+                ? Icon(
+                    Icons.favorite,
+                    color: context.mycolors.bluePinkLight,
+                  )
+                : Icon(
+                    Icons.favorite_border,
+                    color: context.mycolors.textColorInButton,
+                  ));
+      },
+    );
   }
 }
 

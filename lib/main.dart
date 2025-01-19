@@ -1,4 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/core/common/loacalDataBase/hive/hive_database.dart';
+import 'package:flutter_application_2/firebase_options.dart';
 import 'core/app/bloc_observer.dart';
 import 'core/app/Appcubit/app_cubit.dart';
 import 'core/app/Appcubit/app_state.dart';
@@ -11,10 +14,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await ScreenUtil.ensureScreenSize();
   await setupInjector();
   Bloc.observer = AppBlocObserver();
+  await HiveDatabase().setup();
   runApp(const ShopApp());
 }
 

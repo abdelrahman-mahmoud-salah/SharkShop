@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/app/Appcubit/app_cubit.dart';
 import 'package:flutter_application_2/core/styles/images/app_images.dart';
+import 'package:flutter_application_2/featuers/custom/favourite/presentation/blocs/cubit/favourites_cubit.dart';
 import 'package:flutter_application_2/featuers/custom/favourite/presentation/pages/favourite_customer_screen.dart';
 import 'package:flutter_application_2/featuers/custom/home/presentation/pages/home_customer_screen.dart';
 import 'package:flutter_application_2/featuers/custom/main/presentation/blocs/cubit/routes_main_nav_bar_cubit.dart';
@@ -36,9 +37,15 @@ class MainScreenBoody extends StatelessWidget {
                   RoutesMainNavBarStateValue.notifications) {
                 return const NotificationCustomerScreen();
               } else if (state.page == RoutesMainNavBarStateValue.favourites) {
-                return const FavouriteCustomerScreen();
+                return BlocProvider(
+                  create: (context) => FavouritesCubit(),
+                  child: const FavouriteCustomerScreen(),
+                );
               }
-              return const HomeCustomerScreen();
+              return BlocProvider(
+                create: (context) => FavouritesCubit(),
+                child: const HomeCustomerScreen(),
+              );
             },
           )),
           const NavBarMain(),

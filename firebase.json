@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"tech-shoc","appId":"1:42356107118:android:d89452d0786dbc9366837f","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"tech-shoc","configurations":{"android":"1:42356107118:android:d89452d0786dbc9366837f","ios":"1:42356107118:ios:2dbc0e8e17b6082466837f"}}}}}}

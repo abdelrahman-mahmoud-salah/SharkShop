@@ -3,6 +3,7 @@ import 'package:flutter_application_2/core/animation/animation_do.dart';
 import 'package:flutter_application_2/core/di/dependency_injection.dart';
 import 'package:flutter_application_2/core/extension/context_extention.dart';
 import 'package:flutter_application_2/featuers/admin/categories/presentation/blocs/get_all_category_bloc/getallcategory_bloc.dart';
+import 'package:flutter_application_2/featuers/custom/favourite/presentation/blocs/cubit/favourites_cubit.dart';
 import 'package:flutter_application_2/featuers/custom/home/presentation/blocs/get_all_category_bloc/getallcategory_bloc.dart';
 import 'package:flutter_application_2/featuers/custom/home/presentation/blocs/get_all_category_bloc/getallcategory_incustomer_event.dart';
 import 'package:flutter_application_2/featuers/custom/home/presentation/blocs/get_all_product/get_all_product_bloc.dart';
@@ -20,7 +21,11 @@ class HomeCustomerScreen extends StatefulWidget {
 
 class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
   final scrollCotroller = ScrollController();
-
+@override
+  void initState() {
+  
+    super.initState();
+  }
   @override
   void dispose() {
     scrollCotroller.dispose();
@@ -44,8 +49,10 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
             ..add(const GetAllCategoryInCustomerSuccessEvent()),
         ),
         BlocProvider(
-          create: (context) => sl<AllProductCustomerBloc>()..add(const GetAllProductCustomer()),
+          create: (context) =>
+              sl<AllProductCustomerBloc>()..add(const GetAllProductCustomer()),
         ),
+       
       ],
       child: Stack(children: [
         HomeCustomerScreenBoody(controller: scrollCotroller),

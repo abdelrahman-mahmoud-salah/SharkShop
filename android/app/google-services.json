@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "42356107118",
+    "project_id": "tech-shoc",
+    "storage_bucket": "tech-shoc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42356107118:android:d89452d0786dbc9366837f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLEmV8bKTtkv_sflfM9YWPdSZRqUtiMng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
